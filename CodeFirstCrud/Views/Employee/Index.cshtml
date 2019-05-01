@@ -1,0 +1,33 @@
+﻿@model IEnumerable<EmployeeViewModel>
+
+<h1>Employee List</h1>
+
+<a asp-controller="Employee" asp-action="Create">Create New Employee</a>
+
+<br />
+
+<table class="table table-hover text-center">
+    <thead>
+        <tr class="text-center">
+            <td><b>@Html.DisplayNameFor(model => model.FirstName)</b></td>
+            <td><b>@Html.DisplayNameFor(model => model.LastName)</b></td>
+            <td><b>@Html.DisplayNameFor(model => model.Email)</b></td>
+            <td><b>Actions</b></td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.FirstName</td>
+                <td>@item.LastName</td>
+                <td>@item.Email</td>
+                <td>
+                    <a asp-controller="Employee" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-controller="Employee" asp-action="Update" asp-route-id="@item.Id">Update</a> |
+                    <a asp-controller="Employee" asp-action="Delete" asp-route-id="@item.Id">Remove</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
